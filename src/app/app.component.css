@@ -1,0 +1,31 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100dvh;
+  gap: 1rem;
+
+  h1,
+  h3 {
+    margin: 0;
+  }
+
+  /* LinkedIn button */
+  button {
+    background-color: #0077b5;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 9999px;
+    margin-top: 1rem;
+
+    transition: scale 0.1s ease;
+
+    &:active {
+      scale: 0.98;
+    }
+  }
+}
