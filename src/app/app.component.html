@@ -12,5 +12,17 @@
 } @else {
   <h1>JobGrid</h1>
   <h3>The best place to find your next job</h3>
-  <button (click)="logInWithLinkedIn()">Log in with LinkedIn</button>
+  <button class="linkedin" (click)="logInWithLinkedIn()">Log in with LinkedIn</button>
+  <div class="separator">
+    <span>or</span>
+  </div>
+  <form (ngSubmit)="logIn()">
+    <label for="email">Email</label>
+    <input id="email" type="email" [(ngModel)]="email" name="email" required />
+
+    <label for="password">Password</label>
+    <input id="password" type="password" [(ngModel)]="password" name="password" required />
+
+    <button type="submit">Log In with credentials</button>
+  </form>
 }

@@ -43,6 +43,24 @@ export class AuthService {
   }
 
   /**
+   * Logs in the user using email and password.
+   * @param email - The user's email.
+   * @param password - The user's password.
+   */
+  logInWithEmailAndPassword(email: string, password: string): void {
+    const url = `${this.baseUrl}/loginWithEmailAndPassword`;
+    this.httpClient.post<{ message: string }>(url, { email, password }, { withCredentials: true }).subscribe({
+      next: () => {
+        this.getUser();
+        this.router.navigate(['/']);
+      },
+      error: (error) => {
+        console.error('Error during email/password login:', error);
+      }
+    });
+  }
+
+  /**
    * Fetches the authenticated user's data and updates the user signal.
    * If the user is already set, it does nothing.
    */
