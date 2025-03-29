@@ -1,6 +1,6 @@
-import { Component, computed, inject, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { Component, computed, inject } from '@angular/core';
 import { AuthService } from './core/services/auth.service';
+import { AccessTokenHandlerService } from './core/services/access-token-handler.service';
 
 /**
  * Root component of the JobGrid application.
@@ -10,28 +10,11 @@ import { AuthService } from './core/services/auth.service';
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
-export class AppComponent implements OnInit {
+export class AppComponent {
   title = 'JobGrid';
   authService = inject(AuthService);
-  route = inject(ActivatedRoute);
-  accessToken: string | null = null;
+  accessTokenHandlerService = inject(AccessTokenHandlerService);
   readonly user = computed(() => this.authService.user());
-
-  /**
-   * Initializes the component and handles LinkedIn access token from the URL fragment.
-   */
-  ngOnInit(): void {
-    this.route.fragment.subscribe((fragment) => {
-      if (fragment) {
-        const params = new URLSearchParams(fragment);
-        const accessToken = params.get('access_token');
-
-        if (accessToken) {
-          this.authService.startUserSession(accessToken);
-        }
-      }
-    });
-  }
 
   /**
    * Initiates the LinkedIn login process.
