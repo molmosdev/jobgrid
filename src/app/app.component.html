@@ -1,6 +1,5 @@
-<h1>JobGrid</h1>
-<h3>The best place to find your next job</h3>
 @if (user()) {
+  <h1 class="logo">JobGrid</h1>
   @let metadata = user()?.user_metadata;
   <h2 class="welcome-title">Welcome, {{ metadata?.name }}</h2>
   <div class="user-info">
@@ -9,5 +8,7 @@
   </div>
   <button (click)="logOut()">Log out</button>
 } @else {
+  <h1>JobGrid</h1>
+  <h3>The best place to find your next job</h3>
   <button (click)="logInWithLinkedIn()">Log in with LinkedIn</button>
 }

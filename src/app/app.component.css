@@ -30,6 +30,14 @@
   }
 }
 
+.logo {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  font-size: 1.5rem;
+  margin: 0;
+}
+
 .welcome-title {
   margin-top: 2rem;
   margin-bottom: 0;
