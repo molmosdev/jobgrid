@@ -15,6 +15,7 @@ export class AppComponent {
   authService = inject(AuthService);
   accessTokenHandlerService = inject(AccessTokenHandlerService);
   readonly user = computed(() => this.authService.user());
+  readonly isLoading = computed(() => this.authService.isLoading());
 
   /**
    * Initiates the LinkedIn login process.

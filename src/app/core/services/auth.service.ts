@@ -14,6 +14,7 @@ export class AuthService {
   private httpClient = inject(HttpClient);
   private readonly baseUrl = `${environment.apiUrl}/auth`;
   readonly user = signal<User | null>(null);
+  readonly isLoading = signal(true);
   private router = inject(Router);
 
   /**
@@ -47,13 +48,15 @@ export class AuthService {
    */
   getUser(): void {
     if (this.user()) {
-      return; // User is already set, no need to fetch again
+      this.isLoading.set(false);
+      return;
     }
 
     const url = `${this.baseUrl}/user`;
     this.httpClient.get<User>(url, { withCredentials: true }).subscribe({
       next: (response) => {
         this.user.set(response);
+        this.isLoading.set(false);
       },
       error: (error) => {
         console.error('Error fetching user data:', error);

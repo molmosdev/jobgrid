@@ -12,9 +12,7 @@ export class AuthGuard implements CanActivate {
   ) {}
 
   canActivate(): boolean {
-    if (!this.authService.user()) {
-      this.authService.getUser(); // Fetch user data if not already set
-    }
-    return true; // Allow navigation
+    this.authService.getUser();
+    return true;
   }
 }
