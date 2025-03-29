@@ -22,4 +22,11 @@ export class AppComponent {
   logInWithLinkedIn(): void {
     this.authService.logInWithLinkedIn();
   }
+
+  /**
+   * Logs the user out and clears the session.
+   */
+  logOut(): void {
+    this.authService.logOut();
+  }
 }

@@ -43,8 +43,13 @@ export class AuthService {
 
   /**
    * Fetches the authenticated user's data and updates the user signal.
+   * If the user is already set, it does nothing.
    */
   getUser(): void {
+    if (this.user()) {
+      return; // User is already set, no need to fetch again
+    }
+
     const url = `${this.baseUrl}/user`;
     this.httpClient.get<User>(url, { withCredentials: true }).subscribe({
       next: (response) => {
@@ -52,6 +57,22 @@ export class AuthService {
       },
       error: (error) => {
         console.error('Error fetching user data:', error);
+      }
+    });
+  }
+
+  /**
+   * Logs the user out by clearing the session and user data.
+   */
+  logOut(): void {
+    const url = `${this.baseUrl}/logout`;
+    this.httpClient.get(url, { withCredentials: true }).subscribe({
+      next: () => {
+        this.user.set(null);
+        this.router.navigate(['/']);
+      },
+      error: (error) => {
+        console.error('Error during logout:', error);
       }
     });
   }

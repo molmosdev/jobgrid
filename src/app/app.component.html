@@ -7,6 +7,7 @@
     <img [src]="metadata?.picture" alt="User Picture" />
     <p><strong>Email:</strong> {{ metadata?.email }}</p>
   </div>
+  <button (click)="logOut()">Log out</button>
 } @else {
   <button (click)="logInWithLinkedIn()">Log in with LinkedIn</button>
 }
