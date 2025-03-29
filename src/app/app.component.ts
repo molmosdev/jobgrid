@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, inject, OnInit, signal } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { environment } from '../environments/environment';
 
 export interface UserMetadata {
@@ -27,6 +27,7 @@ export class AppComponent implements OnInit {
   httpClient = inject(HttpClient);
   route = inject(ActivatedRoute);
   accessToken: string | null = null;
+  router = inject(Router);
   readonly userMetadata = signal<UserMetadata | null>(null);
 
   ngOnInit() {
@@ -37,6 +38,7 @@ export class AppComponent implements OnInit {
 
         if (this.accessToken) {
           this.startUserSession(this.accessToken);
+          this.router.navigate(['/']);
         }
       }
     });
