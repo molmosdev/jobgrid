@@ -4,6 +4,9 @@ import { environment } from '../../../environments/environment';
 import { User } from '../../shared/interfaces/user';
 import { Router } from '@angular/router';
 
+/**
+ * Service for handling authentication-related operations.
+ */
 @Injectable({
   providedIn: 'root'
 })
@@ -13,12 +16,19 @@ export class AuthService {
   readonly user = signal<User | null>(null);
   private router = inject(Router);
 
-  logInWithLinkedIn() {
+  /**
+   * Redirects the user to the LinkedIn login page.
+   */
+  logInWithLinkedIn(): void {
     const url = `${this.baseUrl}/loginWithLinkedIn`;
     window.location.href = url;
   }
 
-  startUserSession(token: string) {
+  /**
+   * Starts a user session by setting the access token as a cookie.
+   * @param token - The access token received from LinkedIn.
+   */
+  startUserSession(token: string): void {
     const url = `${this.baseUrl}/startUserSession`;
     this.httpClient.get(url, { params: { access_token: token }, withCredentials: true }).subscribe({
       next: () => {
@@ -31,7 +41,10 @@ export class AuthService {
     });
   }
 
-  getUser() {
+  /**
+   * Fetches the authenticated user's data and updates the user signal.
+   */
+  getUser(): void {
     const url = `${this.baseUrl}/user`;
     this.httpClient.get<User>(url, { withCredentials: true }).subscribe({
       next: (response) => {
