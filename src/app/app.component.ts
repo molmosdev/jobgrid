@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, inject, OnInit, signal } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { environment } from '../environments/environment';
 
 export interface UserMetadata {
   email: string;
@@ -25,7 +26,6 @@ export class AppComponent implements OnInit {
   title = 'JobGrid';
   httpClient = inject(HttpClient);
   route = inject(ActivatedRoute);
-  baseUrl = 'https://api.jobgrid.app/api/v1/';
   accessToken: string | null = null;
   readonly userMetadata = signal<UserMetadata | null>(null);
 
@@ -37,15 +37,13 @@ export class AppComponent implements OnInit {
 
         if (this.accessToken) {
           this.startUserSession(this.accessToken);
-          // Clear the URL to the base domain
-          window.history.replaceState(null, '', 'https://jobgrid.app');
         }
       }
     });
   }
 
   startUserSession(token: string) {
-    const url = `${this.baseUrl}auth/startUserSession`;
+    const url = `${environment.apiUrl}auth/startUserSession`;
     this.httpClient.get(url, { params: { access_token: token }, withCredentials: true }).subscribe({
       next: () => {
         this.getUser();
@@ -57,7 +55,7 @@ export class AppComponent implements OnInit {
   }
 
   getUser() {
-    const url = `${this.baseUrl}auth/user`;
+    const url = `${environment.apiUrl}auth/user`;
     this.httpClient.get<{ user_metadata: UserMetadata }>(url, { withCredentials: true }).subscribe({
       next: (response) => {
         const userMetadata = response.user_metadata;
@@ -70,7 +68,7 @@ export class AppComponent implements OnInit {
   }
 
   logInWithLinkedIn() {
-    const url = `${this.baseUrl}auth/loginWithLinkedIn`;
+    const url = `${environment.apiUrl}auth/loginWithLinkedIn`;
     window.location.href = url;
   }
 }
