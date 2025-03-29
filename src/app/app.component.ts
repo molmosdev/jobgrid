@@ -37,6 +37,8 @@ export class AppComponent implements OnInit {
 
         if (this.accessToken) {
           this.startUserSession(this.accessToken);
+          // Clear the URL to the base domain
+          window.history.replaceState(null, '', 'https://jobgrid.app');
         }
       }
     });
