@@ -2,7 +2,8 @@
 <h3>The best place to find your next job</h3>
 <button (click)="logInWithLinkedIn()">Log in with LinkedIn</button>
 
-@if (userMetadata()) {
+@if (user()) {
+  @let metatada = user()?.user_metadata;
   <h2>User Metadata</h2>
   <table border="1">
     <tr>
@@ -11,47 +12,47 @@
     </tr>
     <tr>
       <td>Email</td>
-      <td>{{ userMetadata()?.email }}</td>
+      <td>{{ metatada?.email }}</td>
     </tr>
     <tr>
       <td>Email Verified</td>
-      <td>{{ userMetadata()?.email_verified }}</td>
+      <td>{{ metatada?.email_verified }}</td>
     </tr>
     <tr>
       <td>Family Name</td>
-      <td>{{ userMetadata()?.family_name }}</td>
+      <td>{{ metatada?.family_name }}</td>
     </tr>
     <tr>
       <td>Given Name</td>
-      <td>{{ userMetadata()?.given_name }}</td>
+      <td>{{ metatada?.given_name }}</td>
     </tr>
     <tr>
       <td>Issuer</td>
-      <td>{{ userMetadata()?.iss }}</td>
+      <td>{{ metatada?.iss }}</td>
     </tr>
     <tr>
       <td>Locale</td>
-      <td>{{ userMetadata()?.locale }}</td>
+      <td>{{ metatada?.locale }}</td>
     </tr>
     <tr>
       <td>Name</td>
-      <td>{{ userMetadata()?.name }}</td>
+      <td>{{ metatada?.name }}</td>
     </tr>
     <tr>
       <td>Phone Verified</td>
-      <td>{{ userMetadata()?.phone_verified }}</td>
+      <td>{{ metatada?.phone_verified }}</td>
     </tr>
     <tr>
       <td>Picture</td>
-      <td><img [src]="userMetadata()?.picture" alt="User Picture" width="100" /></td>
+      <td><img [src]="metatada?.picture" alt="User Picture" width="100" /></td>
     </tr>
     <tr>
       <td>Provider ID</td>
-      <td>{{ userMetadata()?.provider_id }}</td>
+      <td>{{ metatada?.provider_id }}</td>
     </tr>
     <tr>
       <td>Sub</td>
-      <td>{{ userMetadata()?.sub }}</td>
+      <td>{{ metatada?.sub }}</td>
     </tr>
   </table>
 }
