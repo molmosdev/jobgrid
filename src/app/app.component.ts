@@ -25,7 +25,7 @@ export class AppComponent implements OnInit {
   title = 'JobGrid';
   httpClient = inject(HttpClient);
   route = inject(ActivatedRoute);
-  baseUrl = 'http://api.jobgrid.app/api/v1/';
+  baseUrl = 'https://api.jobgrid.app/api/v1/';
   accessToken: string | null = null;
   readonly userMetadata = signal<UserMetadata | null>(null);
 
