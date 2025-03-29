@@ -1,18 +1,16 @@
 @if (isLoading()) {
   <p>Loading...</p>
+} @else if (user()) {
+  <h1 class="logo">JobGrid</h1>
+  @let metadata = user()?.user_metadata;
+  <h2 class="welcome-title">Welcome, {{ metadata?.name }}</h2>
+  <div class="user-info">
+    <img [src]="metadata?.picture" alt="User Picture" />
+    <p><strong>Email:</strong> {{ metadata?.email }}</p>
+  </div>
+  <button (click)="logOut()">Log out</button>
 } @else {
-  @if (user()) {
-    <h1 class="logo">JobGrid</h1>
-    @let metadata = user()?.user_metadata;
-    <h2 class="welcome-title">Welcome, {{ metadata?.name }}</h2>
-    <div class="user-info">
-      <img [src]="metadata?.picture" alt="User Picture" />
-      <p><strong>Email:</strong> {{ metadata?.email }}</p>
-    </div>
-    <button (click)="logOut()">Log out</button>
-  } @else {
-    <h1>JobGrid</h1>
-    <h3>The best place to find your next job</h3>
-    <button (click)="logInWithLinkedIn()">Log in with LinkedIn</button>
-  }
+  <h1>JobGrid</h1>
+  <h3>The best place to find your next job</h3>
+  <button (click)="logInWithLinkedIn()">Log in with LinkedIn</button>
 }

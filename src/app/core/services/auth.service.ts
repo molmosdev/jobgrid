@@ -60,6 +60,7 @@ export class AuthService {
       },
       error: (error) => {
         console.error('Error fetching user data:', error);
+        this.isLoading.set(false);
       }
     });
   }
