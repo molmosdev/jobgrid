@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { AuthService } from './core/services/auth.service';
 
 /**
  * Root component of the JobGrid application.
@@ -10,4 +11,10 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'JobGrid';
+
+  authService = inject(AuthService);
+
+  logInWithLinkedIn() {
+    this.authService.logInWithLinkedIn();
+  }
 }

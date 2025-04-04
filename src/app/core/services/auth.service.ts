@@ -18,37 +18,12 @@ export class AuthService {
   private router = inject(Router);
 
   /**
-   * Redirects the user to the LinkedIn login page.
-   */
-  logInWithLinkedIn(): void {
-    const url = `${this.baseUrl}/loginWithLinkedIn`;
-    window.location.href = url;
-  }
-
-  /**
-   * Starts a user session by setting the access token as a cookie.
-   * @param token - The access token received from LinkedIn.
-   */
-  startUserSession(token: string): void {
-    const url = `${this.baseUrl}/startUserSession`;
-    this.httpClient.get(url, { params: { access_token: token }, withCredentials: true }).subscribe({
-      next: () => {
-        this.getUser();
-        this.router.navigate(['/']);
-      },
-      error: (error) => {
-        console.error('Error setting access token as cookie:', error);
-      }
-    });
-  }
-
-  /**
    * Logs in the user using email and password.
    * @param email - The user's email.
    * @param password - The user's password.
    */
   logInWithEmailAndPassword(email: string, password: string): void {
-    const url = `${this.baseUrl}/loginWithEmailAndPassword`;
+    const url = `${this.baseUrl}/login`;
     this.httpClient.post<{ message: string }>(url, { email, password }, { withCredentials: true }).subscribe({
       next: () => {
         this.getUser();
@@ -58,6 +33,14 @@ export class AuthService {
         console.error('Error during email/password login:', error);
       }
     });
+  }
+
+  /**
+   * Redirects the user to the LinkedIn login page.
+   */
+  logInWithLinkedIn(): void {
+    const url = `${this.baseUrl}/linkedin/login`;
+    window.location.href = url;
   }
 
   /**
