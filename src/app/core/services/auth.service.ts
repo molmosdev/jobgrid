@@ -69,7 +69,7 @@ export class AuthService {
   /**
    * Logs the user out by clearing the session and user data.
    */
-  logOut(): void {
+  logout(): void {
     const url = `${this.baseUrl}/logout`;
     this.httpClient.get(url, { withCredentials: true }).subscribe({
       next: () => {

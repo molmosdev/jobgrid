@@ -7,6 +7,8 @@
   <span> {{ metadata.name }} </span>
   <span> {{ metadata.email }} </span>
   <img [src]="metadata.picture" alt="User Profile Picture" />
-}
 
-<button (click)="logInWithLinkedIn()">log in with linkedin</button>
+  <button (click)="logout()">log out</button>
+} @else {
+  <button (click)="logInWithLinkedIn()">log in with linkedin</button>
+}

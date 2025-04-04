@@ -18,4 +18,8 @@ export class AppComponent {
   logInWithLinkedIn() {
     this.authService.logInWithLinkedIn();
   }
+
+  logout() {
+    this.authService.logout();
+  }
 }
