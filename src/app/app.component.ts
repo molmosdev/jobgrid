@@ -1,6 +1,4 @@
-import { Component, computed, inject } from '@angular/core';
-import { AuthService } from './core/services/auth.service';
-import { User } from './shared/interfaces/user';
+import { Component } from '@angular/core';
 
 /**
  * Root component of the JobGrid application.
@@ -12,14 +10,4 @@ import { User } from './shared/interfaces/user';
 })
 export class AppComponent {
   title = 'JobGrid';
-  authService = inject(AuthService);
-  readonly user = computed<User | null>(() => this.authService.user());
-
-  logInWithLinkedIn() {
-    this.authService.logInWithLinkedIn();
-  }
-
-  logout() {
-    this.authService.logout();
-  }
 }
