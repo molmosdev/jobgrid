@@ -39,8 +39,12 @@ export class AuthService {
    * Redirects the user to the LinkedIn login page.
    */
   logInWithLinkedIn(): void {
-    // Remove any client-side redirect params
-    window.location.href = `${environment.apiUrl}/auth/linkedin/login`;
+    this.httpClient.get<{ url: string }>(`${this.baseUrl}/linkedin`, { withCredentials: true }).subscribe({
+      next: () => {},
+      error: (error) => {
+        console.error('Error during LinkedIn login:', error);
+      }
+    });
   }
 
   /**
