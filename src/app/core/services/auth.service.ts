@@ -39,7 +39,7 @@ export class AuthService {
    * Redirects the user to the LinkedIn login page.
    */
   logInWithLinkedIn(): void {
-    this.httpClient.get<{ url: string }>(`${this.baseUrl}/linkedin`, { withCredentials: true }).subscribe({
+    this.httpClient.get<void>(`${this.baseUrl}/linkedin/login`, { withCredentials: true }).subscribe({
       next: () => {},
       error: (error) => {
         console.error('Error during LinkedIn login:', error);
