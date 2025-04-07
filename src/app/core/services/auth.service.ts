@@ -39,8 +39,8 @@ export class AuthService {
    * Redirects the user to the LinkedIn login page.
    */
   logInWithLinkedIn(): void {
-    const url = `${this.baseUrl}/linkedin/login`;
-    window.location.href = url;
+    // Remove any client-side redirect params
+    window.location.href = `${environment.apiUrl}/auth/linkedin/login`;
   }
 
   /**
