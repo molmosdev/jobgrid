@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, effect, inject } from '@angular/core';
 import { AuthService } from './core/services/auth.service';
 
 /**
@@ -15,5 +15,11 @@ export class AppComponent {
 
   login() {
     this.authService.logInWithLinkedIn();
+  }
+
+  constructor() {
+    effect(() => {
+      console.log('User:', this.authService.user());
+    });
   }
 }
