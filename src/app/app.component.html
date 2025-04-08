@@ -1,4 +1,11 @@
 <img src="/svg/jobgrid-logo.svg" alt="JobGrid Logo" srcset="" />
 <h1>JobGrid</h1>
 
-<button (click)="login()">log in with linkedin</button>
+@if (user()) {
+  @let userMetadata = user()?.user_metadata;
+  <h2>Welcome, {{ userMetadata?.given_name }}</h2>
+  <p>email: {{ userMetadata?.email }}</p>
+  <button (click)="logout()">Logout</button>
+} @else {
+  <button (click)="login()">Log in with linkedin</button>
+}
