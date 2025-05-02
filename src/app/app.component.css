@@ -5,9 +5,9 @@
   flex-direction: column;
   height: 100dvh;
 
-  img {
+  svg {
     width: 100px;
-    animation: img-fade-in 0.5s ease-in-out;
+    animation: svg-fade-in 0.5s ease-in-out;
 
     &.user-picture {
       border-radius: 100%;
@@ -16,13 +16,13 @@
 
   h1 {
     font-size: 2rem;
-    margin: 0.5rem;
+    margin: 1rem;
     opacity: 0;
     animation: h1-fade-in 0.5s 0.2s ease-in-out forwards;
   }
 }
 
-@keyframes img-fade-in {
+@keyframes svg-fade-in {
   0% {
     opacity: 0;
     scale: 0.9;
