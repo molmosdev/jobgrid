@@ -4,6 +4,7 @@
   align-items: center;
   flex-direction: column;
   height: 100dvh;
+  gap: 0.5rem;
 
   svg {
     width: 4rem;
@@ -19,6 +20,11 @@
     margin: 1rem;
     opacity: 0;
     animation: h1-fade-in 0.5s 0.2s ease-in-out forwards;
+  }
+
+  .stay-tuned {
+    position: absolute;
+    bottom: 1rem;
   }
 }
 
