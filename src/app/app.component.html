@@ -9,10 +9,3 @@
 <p class="stay-tuned">
   <em>Stay tuned, we launch this fall.</em>
 </p>
-
-@if (!user()) {
-  <button (click)="login()">linkedin</button>
-} @else {
-  {{ user() | json}}
-  <button (click)="logout()">logout</button>
-}
