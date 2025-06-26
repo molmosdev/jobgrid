@@ -1,3 +1,3 @@
 export const environment = {
-  apiUrl: 'https://jobgrid.app/api'
+  apiUrl: 'https://api.jobgrid.app'
 };
