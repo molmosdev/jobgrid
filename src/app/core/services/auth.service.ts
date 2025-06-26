@@ -1,8 +1,8 @@
 import { HttpClient } from '@angular/common/http';
-import { inject, Injectable, signal } from '@angular/core';
-import { environment } from '../../../environments/environment';
+import { computed, inject, Injectable, signal } from '@angular/core';
 import { User } from '../../shared/interfaces/user';
 import { Router } from '@angular/router';
+import { ApiService } from './api.service';
 
 /**
  * Service for handling authentication-related operations.
@@ -12,7 +12,8 @@ import { Router } from '@angular/router';
 })
 export class AuthService {
   private httpClient = inject(HttpClient);
-  private readonly baseUrl = `${environment.apiUrl}/auth`;
+  apiService = inject(ApiService);
+  readonly baseUrl = computed(() => `${this.apiService.url()}/auth`);
   readonly user = signal<User | null>(null);
   readonly isLoading = signal(true);
   private router = inject(Router);
@@ -23,7 +24,7 @@ export class AuthService {
    * @param password - The user's password.
    */
   logInWithEmailAndPassword(email: string, password: string): void {
-    const url = `${this.baseUrl}/login`;
+    const url = `${this.baseUrl()}/login`;
     this.httpClient.post<{ message: string }>(url, { email, password }, { withCredentials: true }).subscribe({
       next: () => {
         this.getUser();
@@ -39,7 +40,7 @@ export class AuthService {
    * Redirects the user to the LinkedIn login page.
    */
   logInWithLinkedIn(): void {
-    const url = `${this.baseUrl}/linkedin/login`;
+    const url = `${this.baseUrl()}/linkedin/login`;
     window.location.href = url;
   }
 
@@ -53,7 +54,7 @@ export class AuthService {
       return;
     }
 
-    const url = `${this.baseUrl}/user`;
+    const url = `${this.baseUrl()}/user`;
     this.httpClient.get<User>(url, { withCredentials: true }).subscribe({
       next: (response) => {
         this.user.set(response);
@@ -70,7 +71,7 @@ export class AuthService {
    * Logs the user out by clearing the session and user data.
    */
   logout(): void {
-    const url = `${this.baseUrl}/logout`;
+    const url = `${this.baseUrl()}/logout`;
     this.httpClient.get(url, { withCredentials: true }).subscribe({
       next: () => {
         this.user.set(null);
