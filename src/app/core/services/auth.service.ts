@@ -14,7 +14,6 @@ export class AuthService {
   private httpClient = inject(HttpClient);
   apiService = inject(ApiService);
   readonly baseUrl = computed(() => `${this.apiService.url()}/auth`);
-  readonly jobgridBaseUrl = computed(() => `${this.apiService.jobgridUrl()}/auth`);
   readonly user = signal<User | null>(null);
   readonly isLoading = signal(true);
   private router = inject(Router);
@@ -41,7 +40,7 @@ export class AuthService {
    * Redirects the user to the LinkedIn login page.
    */
   logInWithLinkedIn(): void {
-    const url = `${this.jobgridBaseUrl()}/linkedin/login`;
+    const url = `${this.baseUrl()}/linkedin/login`;
     window.location.href = url;
   }
 
@@ -73,14 +72,6 @@ export class AuthService {
    */
   logout(): void {
     const url = `${this.baseUrl()}/logout`;
-    this.httpClient.get(url, { withCredentials: true }).subscribe({
-      next: () => {
-        this.user.set(null);
-        this.router.navigate(['/']);
-      },
-      error: (error) => {
-        console.error('Error during logout:', error);
-      }
-    });
+    window.location.href = url;
   }
 }
