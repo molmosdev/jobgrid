@@ -1,34 +1,22 @@
 export interface User {
-  iss: string;
   sub: string;
-  aud: string;
-  exp: number;
-  iat: number;
+  given_name: string;
+  family_name: string;
+  nickname: string;
+  name: string;
+  picture: string;
+  locale: Locale;
+  updated_at: string;
   email: string;
-  phone: string;
-  app_metadata: {
-    provider: string;
-    providers: string[];
-  };
-  user_metadata: {
-    email: string;
-    email_verified: boolean;
-    family_name: string;
-    given_name: string;
-    iss: string;
-    locale: string;
-    name: string;
-    phone_verified: boolean;
-    picture: string;
-    provider_id: string;
-    sub: string;
-  };
-  role: string;
-  aal: string;
-  amr: {
-    method: string;
-    timestamp: number;
-  }[];
-  session_id: string;
-  is_anonymous: boolean;
+  email_verified: boolean;
+  iss: string;
+  aud: string;
+  iat: number;
+  exp: number;
+  sid: string;
+}
+
+interface Locale {
+  country: string;
+  language: string;
 }
