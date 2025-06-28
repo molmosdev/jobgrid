@@ -26,6 +26,23 @@
     position: absolute;
     bottom: 1rem;
   }
+
+  img {
+    height: 40px;
+    width: 40px;
+    border-radius: 100%;
+    outline: 2px solid #0d3311;
+    outline-offset: 2px;
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+  }
+
+  button {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+  }
 }
 
 @keyframes svg-fade-in {

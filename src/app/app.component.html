@@ -13,6 +13,6 @@
 @if (!user()) {
   <button (click)="login()">linkedin</button>
 } @else {
-  {{ user() | json }}
+  <img [src]="user()?.picture" alt="" />
   <button (click)="logout()">logout</button>
 }

@@ -1,7 +1,6 @@
 import { Component, computed, inject } from '@angular/core';
 import { AuthService } from './core/services/auth.service';
 import { User } from './shared/interfaces/user';
-import { JsonPipe } from '@angular/common';
 
 /**
  * Root component of the JobGrid application.
@@ -9,8 +8,7 @@ import { JsonPipe } from '@angular/common';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css',
-  imports: [JsonPipe]
+  styleUrl: './app.component.css'
 })
 export class AppComponent {
   title = 'JobGrid';
