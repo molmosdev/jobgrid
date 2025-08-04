@@ -1,16 +1,17 @@
 import { Component, computed, inject } from '@angular/core';
 import { AuthService } from './core/services/auth.service';
 import { User } from './shared/interfaces/user';
+import { RouterOutlet } from '@angular/router';
 
 /**
  * Root component of the JobGrid application.
  */
 @Component({
   selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  imports: [RouterOutlet],
+  templateUrl: './app.component.html'
 })
-export class AppComponent {
+export default class AppComponent {
   title = 'JobGrid';
   authService = inject(AuthService);
   readonly user = computed<User | null>(() => this.authService.user());
