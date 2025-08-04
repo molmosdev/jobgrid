@@ -1,0 +1,66 @@
+:root {
+  /* Enable support for light and dark color schemes */
+  color-scheme: light dark;
+
+  /* Base colors */
+  --grey: #444444;
+  --black: #000000;
+  --white: #ffffff;
+  --light-grey: #f8f8f8;
+  --yellow: #ffe674;
+  --dark-yellow: #f6c700;
+  --super-dark-yellow: #a48300;
+
+  /* Base properties */
+  --radius: 0.5rem;
+
+  /* Base theme colors */
+  --bg-color: light-dark(var(--light-grey), #0b0b0b);
+  --text-color: light-dark(var(--grey), var(--white));
+
+  /* UI colors */
+  --background: light-dark(var(--white), var(--black));
+  --foreground: light-dark(var(--grey), var(--white));
+  --border-color: light-dark(
+    color-mix(in srgb, var(--white), var(--black) 8%),
+    color-mix(in srgb, var(--grey), var(--black) 64%)
+  );
+
+  /* Component colors */
+  --primary: light-dark(var(--yellow), var(--super-dark-yellow));
+  --primary-foreground: light-dark(var(--super-dark-yellow), var(--black));
+  --primary-border-color: light-dark(var(--dark-yellow), var(--white));
+  --secondary: light-dark(var(--light-grey), var(--grey));
+  --secondary-foreground: light-dark(var(--grey), var(--white));
+  --secondary-border-color: light-dark(
+    color-mix(in srgb, var(--white), var(--grey) 15%),
+    color-mix(in srgb, var(--black), var(--white) 5%)
+  );
+  --input-background: light-dark(var(--bg-color), var(--bg-color));
+  --input-foreground: light-dark(var(--grey), var(--white));
+
+  /* Error colors */
+  --error-foreground: light-dark(#c40000ab, #ff6b6b);
+  --error: light-dark(#fff0f0, #382d2d);
+  --error-border-color: light-dark(#ffdddd, #805454);
+
+  /* Success colors */
+  --success: light-dark(#d4edda, #2f3a2f);
+  --success-foreground: light-dark(#155724, #66d780);
+  --success-border-color: light-dark(#c3e6cb, #3a4a3a);
+
+  /* Warning colors */
+  --warning: light-dark(#fff3cd, #3a2f2f);
+  --warning-foreground: light-dark(#856404, #ffdd57);
+  --warning-border-color: light-dark(#ffeeba, #4a3a3a);
+}
+
+/* Dark theme configuration */
+[data-theme='dark'] {
+  color-scheme: dark;
+}
+
+/* Light theme configuration */
+[data-theme='light'] {
+  color-scheme: light;
+}
