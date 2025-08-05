@@ -1,1 +1,28 @@
-<p>register works!</p>
+<b-card [formGroup]="registerForm" [style.maxWidth.vw]="75">
+  <b-card-content>
+    <!-- Name -->
+    <label for="name">Name</label>
+    <input type="text" b-input id="name" formControlName="name" placeholder="Rocket HR" />
+    <!-- Domain -->
+    <label for="domain">Domain</label>
+    <b-input-group [style.gap.px]="1">
+      <span>https://www.</span>
+      <input type="text" b-input id="domain" formControlName="domain" placeholder="rocket-hr.com" />
+    </b-input-group>
+    <!-- Subdomain -->
+    <label for="subdomain">Subdomain</label>
+    <input type="text" b-input id="subdomain" formControlName="subdomain" placeholder="jobs" />
+  </b-card-content>
+  <!-- Final URL -->
+  <b-card-content class="final-url">
+    @if (registerForm.get('domain')?.value || registerForm.get('subdomain')?.value) {
+      https://{{ registerForm.get('subdomain')?.value ? registerForm.get('subdomain')?.value + '.' : ''
+      }}{{ registerForm.get('domain')?.value || '' }}
+    } @else {
+      https://jobs.rocket-hr.com
+    }
+  </b-card-content>
+  <b-card-footer [style.flexDirection]="'column'">
+    <button b-button variant="primary" type="submit" (click)="onSubmit()">Register</button>
+  </b-card-footer>
+</b-card>
