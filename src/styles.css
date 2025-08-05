@@ -1,8 +1,10 @@
 /* You can add global styles to this file, and also import other style files */
 @import url('https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap');
+@import '@basis-ng/styles';
+@import url('styles/theme.css');
 
 html {
-  background: linear-gradient(110deg, #adebb3, #ffffff);
+  background: linear-gradient(to bottom, #adebb3 0%, #adebb3 30%, #ffffff 100%);
   color: #0d3311;
 }
 

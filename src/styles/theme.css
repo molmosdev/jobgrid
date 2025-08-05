@@ -6,30 +6,32 @@
   --grey: #444444;
   --black: #000000;
   --white: #ffffff;
+  --transparent-white: #ffffff69;
   --light-grey: #f8f8f8;
-  --yellow: #ffe674;
-  --dark-yellow: #f6c700;
-  --super-dark-yellow: #a48300;
+  --green: #adebb3;
+  --dark-green: #9ed7a4;
+  --super-dark-green: #35773d;
+  --hyper-dark-green: #0d3311;
 
   /* Base properties */
-  --radius: 0.5rem;
+  --radius: 0.7rem;
 
   /* Base theme colors */
   --bg-color: light-dark(var(--light-grey), #0b0b0b);
-  --text-color: light-dark(var(--grey), var(--white));
+  --text-color: light-dark(var(--hyper-dark-green), var(--white));
 
   /* UI colors */
-  --background: light-dark(var(--white), var(--black));
+  --background: light-dark(var(--transparent-white), var(--black));
   --foreground: light-dark(var(--grey), var(--white));
   --border-color: light-dark(
-    color-mix(in srgb, var(--white), var(--black) 8%),
+    color-mix(in srgb, var(--transparent-white), var(--black) 8%),
     color-mix(in srgb, var(--grey), var(--black) 64%)
   );
 
   /* Component colors */
-  --primary: light-dark(var(--yellow), var(--super-dark-yellow));
-  --primary-foreground: light-dark(var(--super-dark-yellow), var(--black));
-  --primary-border-color: light-dark(var(--dark-yellow), var(--white));
+  --primary: light-dark(var(--green), var(--super-dark-green));
+  --primary-foreground: light-dark(var(--super-dark-green), var(--black));
+  --primary-border-color: light-dark(var(--dark-green), var(--white));
   --secondary: light-dark(var(--light-grey), var(--grey));
   --secondary-foreground: light-dark(var(--grey), var(--white));
   --secondary-border-color: light-dark(
@@ -37,7 +39,7 @@
     color-mix(in srgb, var(--black), var(--white) 5%)
   );
   --input-background: light-dark(var(--bg-color), var(--bg-color));
-  --input-foreground: light-dark(var(--grey), var(--white));
+  --input-foreground: light-dark(var(--hyper-dark-green), var(--white));
 
   /* Error colors */
   --error-foreground: light-dark(#c40000ab, #ff6b6b);
