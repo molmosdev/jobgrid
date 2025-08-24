@@ -16,3 +16,7 @@ body {
 * {
   font-family: 'Geist', sans-serif;
 }
+
+b-card {
+  backdrop-filter: blur(10px);
+}
