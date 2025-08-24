@@ -4,8 +4,8 @@
 @import url('styles/theme.css');
 
 html {
-  background: #effbf4;
-  color: #0d3311;
+  background: var(--bg-color);
+  color: var(--text-color);
 }
 
 body {
