@@ -21,7 +21,7 @@
 
   b-card {
     width: 400px;
-    animation: card-fade-in 0.6s ease-out 0.2s;
+    animation: card-fade-in 0.6s ease-out 0.4s;
     animation-fill-mode: backwards;
     .final-url {
       border: 1px dashed var(--primary);
