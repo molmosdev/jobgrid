@@ -9,17 +9,58 @@
 <b-card [formGroup]="registerForm" [style.maxWidth.vw]="75">
   <b-card-content>
     <!-- Name -->
-    <label for="name">Name</label>
+    <label for="name">Name *</label>
     <input type="text" b-input id="name" formControlName="name" placeholder="Rocket HR" />
+    @if (registerForm.get('name')?.invalid && registerForm.get('name')?.touched) {
+      <div class="error">Name is required.</div>
+    }
     <!-- Domain -->
-    <label for="domain">Domain</label>
+    <label for="domain">Domain *</label>
     <b-input-group [style.gap.px]="1">
       <span>https://www.</span>
       <input type="text" b-input id="domain" formControlName="domain" placeholder="rocket-hr.com" />
     </b-input-group>
+    @if (registerForm.get('domain')?.invalid && registerForm.get('domain')?.touched) {
+      <div class="error">Domain is required.</div>
+    }
     <!-- Subdomain -->
-    <label for="subdomain">Subdomain</label>
+    <label for="subdomain">Subdomain *</label>
     <input type="text" b-input id="subdomain" formControlName="subdomain" placeholder="jobs" />
+    @if (registerForm.get('subdomain')?.invalid && registerForm.get('subdomain')?.touched) {
+      <div class="error">Subdomain is required.</div>
+    }
+    <!-- Profile Image -->
+    <label for="profile_image">Profile Image</label>
+    <input type="file" #profileInput hidden (change)="onFileChange($event, 'profile_image')" />
+    @let profileImage = registerForm.get('profile_image')?.value;
+    @if (!profileImage) {
+      <button b-button type="button" variant="secondary" (click)="profileInput.click()">
+        Update JPG/PNG (max 1MB)
+      </button>
+    }
+    @if (profileImage) {
+      <img [src]="getFileUrl(profileImage)" alt="Profile preview" class="profile-preview-img" />
+      <button b-button type="button" variant="secondary" (click)="removeFile('profile_image', profileInput)">
+        Remove
+      </button>
+    }
+    @if (fileErrors['profile_image']) {
+      <div class="error">{{ fileErrors['profile_image'] }}</div>
+    }
+    <!-- Favicon -->
+    <label for="favicon">Favicon</label>
+    <input type="file" #faviconInput hidden (change)="onFileChange($event, 'favicon')" />
+    @let favicon = registerForm.get('favicon')?.value;
+    @if (!favicon) {
+      <button b-button type="button" variant="secondary" (click)="faviconInput.click()">Update ICO (max 100KB)</button>
+    }
+    @if (favicon) {
+      <img [src]="getFileUrl(favicon)" alt="Favicon preview" class="favicon-preview-img" />
+      <button b-button type="button" variant="secondary" (click)="removeFile('favicon', faviconInput)">Remove</button>
+    }
+    @if (fileErrors['favicon']) {
+      <div class="error">{{ fileErrors['favicon'] }}</div>
+    }
   </b-card-content>
   <!-- Final URL -->
   <b-card-content class="final-url">
