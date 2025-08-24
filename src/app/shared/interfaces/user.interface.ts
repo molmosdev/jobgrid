@@ -1,3 +1,5 @@
+import { Locale } from './locale.interface';
+
 export interface User {
   sub: string;
   given_name: string;
@@ -14,9 +16,4 @@ export interface User {
   iat: number;
   exp: number;
   sid: string;
-}
-
-interface Locale {
-  country: string;
-  language: string;
 }
