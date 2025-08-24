@@ -1,8 +1,8 @@
 import { Component, computed, inject, OnInit } from '@angular/core';
 import { AuthService } from './core/services/auth.service';
-import { User } from './shared/interfaces/user';
 import { RouterOutlet } from '@angular/router';
 import { ThemeService } from '@basis-ng/primitives';
+import { User } from './shared/interfaces/user.interface';
 
 /**
  * Root component of the JobGrid application.
