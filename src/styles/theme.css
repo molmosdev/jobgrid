@@ -29,9 +29,9 @@
   );
 
   /* Component colors */
-  --primary: light-dark(var(--green), var(--super-dark-green));
-  --primary-foreground: light-dark(var(--super-dark-green), var(--black));
-  --primary-border-color: light-dark(var(--dark-green), var(--white));
+  --primary: light-dark(var(--hyper-dark-green), var(--super-dark-green));
+  --primary-foreground: light-dark(var(--white), var(--black));
+  --primary-border-color: light-dark(var(--hyper-dark-green), var(--white));
   --secondary: light-dark(var(--light-grey), var(--grey));
   --secondary-foreground: light-dark(var(--grey), var(--white));
   --secondary-border-color: light-dark(
