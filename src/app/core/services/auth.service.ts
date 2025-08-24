@@ -1,8 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { computed, inject, Injectable, signal } from '@angular/core';
-import { User } from '../../shared/interfaces/user';
 import { Router } from '@angular/router';
 import { ApiService } from './api.service';
+import { User } from '../../shared/interfaces/user.interface';
 
 /**
  * Service for handling authentication-related operations.
@@ -11,11 +11,34 @@ import { ApiService } from './api.service';
   providedIn: 'root'
 })
 export class AuthService {
+  /**
+   * HttpClient instance for making HTTP requests.
+   */
   private httpClient = inject(HttpClient);
+
+  /**
+   * ApiService instance for resolving API URLs.
+   */
   apiService = inject(ApiService);
+
+  /**
+   * The base URL for the auth API endpoints.
+   */
   readonly baseUrl = computed(() => `${this.apiService.url()}/auth`);
+
+  /**
+   * Signal holding the current authenticated user, or null if not authenticated.
+   */
   readonly user = signal<User | null>(null);
+
+  /**
+   * Signal indicating if the authentication state is loading.
+   */
   readonly isLoading = signal(true);
+
+  /**
+   * Router instance for navigation.
+   */
   private router = inject(Router);
 
   /**
