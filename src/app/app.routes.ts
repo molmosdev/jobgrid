@@ -7,8 +7,12 @@ import { UnauthenticatedGuard } from './core/guards/unauthenticated.guard';
 export const routes: Routes = [
   {
     path: '',
-    canActivate: [AuthenticatedGuard, HasCompanyGuard],
     loadComponent: () => import('./features/cooming-soon/cooming-soon.component')
+  },
+  {
+    path: 'dashboard',
+    canActivate: [AuthenticatedGuard, HasCompanyGuard],
+    loadComponent: () => import('./features/dashboard/dashboard.component')
   },
   {
     path: 'register',

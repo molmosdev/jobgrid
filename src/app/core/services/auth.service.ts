@@ -46,13 +46,13 @@ export class AuthService {
    * - null => still resolving session
    * - '/register' => unauthenticated
    * - '/create-company' => needs company
-   * - '/' => fully onboarded
+   * - '/dashboard' => fully onboarded
    */
   readonly postAuthTarget = computed(() => {
     if (this.isLoading()) return null;
     if (!this.session.isAuthenticated()) return '/register';
     if (this.session.needsCompany()) return '/create-company';
-    return '/';
+    return '/dashboard';
   });
 
   /** Router for imperative navigations after auth actions. */
@@ -70,7 +70,7 @@ export class AuthService {
     this.httpClient.post<{ message: string }>(url, { email, password }, { withCredentials: true }).subscribe({
       next: () => {
         this.getUser();
-        this.router.navigate(['/']);
+        this.router.navigate(['/dashboard']);
       },
       error: (error) => {
         console.error('Error during email/password login:', error);

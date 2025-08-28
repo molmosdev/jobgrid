@@ -198,7 +198,7 @@ export default class CreateCompanyComponent implements OnInit, OnDestroy {
         // Refresh session in background to sync server state (company ownership)
         this.sessionService.refresh();
         // Give user a moment to see success message
-        this.redirectTimeoutId = setTimeout(() => this.router.navigate(['/']), 1200);
+        this.redirectTimeoutId = setTimeout(() => this.router.navigate(['/dashboard']), 1200);
       },
       error: (err) => {
         this.submitting.set(false);
