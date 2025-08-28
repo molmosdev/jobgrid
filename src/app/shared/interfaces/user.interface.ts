@@ -1,19 +1,8 @@
-import { Locale } from './locale.interface';
-
 export interface User {
-  sub: string;
-  given_name: string;
-  family_name: string;
-  nickname: string;
-  name: string;
-  picture: string;
-  locale: Locale;
-  updated_at: string;
+  id: string;
+  external_id: string;
   email: string;
-  email_verified: boolean;
-  iss: string;
-  aud: string;
-  iat: number;
-  exp: number;
-  sid: string;
+  name: string;
+  type: 'recruiter' | 'seeker';
+  avatar_url?: string | null;
 }

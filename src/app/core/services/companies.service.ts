@@ -5,35 +5,28 @@ import { map } from 'rxjs/operators';
 import { ApiService } from './api.service';
 import { Company } from '../../shared/interfaces/company.interface';
 
-/**
- * Service for handling company-related operations.
- */
+/** Provides company related API operations. */
 @Injectable({
   providedIn: 'root'
 })
 export class CompaniesService {
-  /**
-   * HttpClient instance for making HTTP requests.
-   */
+  /** Low-level HTTP client. */
   private http = inject(HttpClient);
 
-  /**
-   * ApiService instance for resolving API URLs.
-   */
+  /** API service for base URL resolution. */
   apiService = inject(ApiService);
-  /**
-   * The base URL for the companies API endpoints.
-   */
+
+  /** Base companies endpoint URL. */
   readonly baseUrl = computed(() => `${this.apiService.url()}/companies`);
 
   /**
-   * Registers a new company in the backend.
-   * @param company - The company data to register.
-   * @returns An observable with the created company.
+   * Creates a company.
+   * @param formData - multipart form (fields: name, domain, subdomain, logo?, favicon?).
+   * @returns Observable emitting created company.
    */
   registerCompany(formData: FormData): Observable<Company> {
     return this.http
-      .post<{ company: Company }>(this.baseUrl(), formData)
+      .post<{ company: Company }>(this.baseUrl(), formData, { withCredentials: true })
       .pipe(map((response: { company: Company }) => response.company));
   }
 }

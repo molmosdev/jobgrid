@@ -3,7 +3,7 @@ export interface Company {
   name: string;
   domain: string;
   subdomain: string;
-  profile_image_url?: string;
+  logo_url?: string;
   favicon_url?: string;
   created_at?: string;
 }

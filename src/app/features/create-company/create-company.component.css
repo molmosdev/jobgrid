@@ -29,7 +29,7 @@
     animation-fill-mode: backwards;
 
     b-card-content {
-      max-height: calc(100dvh - 200px);
+      max-height: calc(100dvh - 250px);
       overflow: auto;
       padding: 0.3rem;
 
@@ -51,6 +51,51 @@
       img {
         animation: fade-in 0.3s ease-out 0.4s;
         animation-fill-mode: backwards;
+      }
+
+      .user-summary {
+        display: flex;
+        align-items: center;
+        gap: 0.65rem;
+        margin-bottom: 1rem;
+      }
+      .user-summary .avatar {
+        width: 40px;
+        height: 40px;
+        object-fit: cover;
+        border-radius: var(--radius);
+        border: 1px solid var(--secondary-border-color);
+        background: var(--surface-muted);
+      }
+      .user-summary .meta {
+        display: flex;
+        flex-direction: column;
+        line-height: 1.1;
+      }
+      .user-summary .meta .name {
+        font-weight: 600;
+        font-size: 0.95rem;
+      }
+      .user-summary .meta .email {
+        font-size: 0.75rem;
+        opacity: 0.7;
+        margin-top: 2px;
+        max-width: 180px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+      .success-msg {
+        color: var(--success-foreground, #0a6f3c);
+        font-size: 0.8rem;
+        margin: 0.25rem 0 0.5rem;
+      }
+      .hint {
+        display: block;
+        font-size: 0.6rem;
+        opacity: 0.6;
+        margin-top: -0.25rem;
+        margin-bottom: 0.5rem;
       }
 
       &.final-url {
