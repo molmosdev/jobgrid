@@ -31,7 +31,7 @@
     <b-card-footer>
       <button b-button [style.flex]="1" (click)="sendOtp()">
         @if (optVerificationState() === 'sending') {
-          <b-spinner />
+          <b-spinner color="var(--primary-foreground)" />
         } @else {
           Verify OTP
         }
