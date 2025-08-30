@@ -14,6 +14,7 @@
     "importHelpers": true,
     "target": "ES2022",
     "module": "preserve",
+    "types": ["./worker-configuration.d.ts"],
     "baseUrl": "./src",
     "paths": {
       "@shared/*": ["app/shared/*"],
