@@ -1,0 +1,41 @@
+<b-card class="email" [formGroup]="emailForm" [class.otp-email-sent]="optEmailState() === 'sent'">
+  <b-card-header>
+    <b-card-title> Log in </b-card-title>
+    <b-card-description> Enter your email to log in with OTP</b-card-description>
+  </b-card-header>
+  <b-card-content>
+    <input type="email" id="otp-email" b-input placeholder="Enter your company email" formControlName="email" />
+  </b-card-content>
+  <b-card-footer>
+    <button b-button [style.flex]="1" (click)="sendEmail()">
+      @if (optEmailState() === 'sending') {
+        <b-spinner color="var(--primary-foreground)" />
+      } @else {
+        Login with Magic Link
+      }
+    </button>
+  </b-card-footer>
+</b-card>
+@if (optEmailState() === 'sent') {
+  <b-card class="otp" [formGroup]="otpForm">
+    <b-card-content>
+      <b-otp size="2" formControlName="otp">
+        <input b-otp-digit id="otp-1" #firstOtpInput />
+        <input b-otp-digit id="otp-2" />
+        <input b-otp-digit id="otp-3" />
+        <input b-otp-digit id="otp-4" />
+        <input b-otp-digit id="otp-5" />
+        <input b-otp-digit id="otp-6" />
+      </b-otp>
+    </b-card-content>
+    <b-card-footer>
+      <button b-button [style.flex]="1" (click)="sendOtp()">
+        @if (optVerificationState() === 'sending') {
+          <b-spinner />
+        } @else {
+          Verify OTP
+        }
+      </button>
+    </b-card-footer>
+  </b-card>
+}

@@ -1,15 +1,24 @@
-import { ApplicationConfig, inject, provideZoneChangeDetection, provideAppInitializer } from '@angular/core';
-import { provideRouter } from '@angular/router';
+import {
+  ApplicationConfig,
+  inject,
+  provideAppInitializer,
+  provideBrowserGlobalErrorListeners,
+  provideZonelessChangeDetection,
+} from '@angular/core';
+import { provideRouter, withViewTransitions } from '@angular/router';
 
+import { provideHttpClient, withFetch } from '@angular/common/http';
+import { provideClientHydration, withEventReplay } from '@angular/platform-browser';
+import { Auth } from '@core/services/auth';
 import { routes } from './app.routes';
-import { provideHttpClient } from '@angular/common/http';
-import { SessionService } from './core/services/session.service';
 
 export const appConfig: ApplicationConfig = {
   providers: [
-    provideZoneChangeDetection({ eventCoalescing: true }),
-    provideRouter(routes),
-    provideHttpClient(),
-    provideAppInitializer(() => inject(SessionService).init())
-  ]
+    provideBrowserGlobalErrorListeners(),
+    provideZonelessChangeDetection(),
+    provideRouter(routes, withViewTransitions()),
+    provideClientHydration(withEventReplay()),
+    provideHttpClient(withFetch()),
+    provideAppInitializer(() => inject(Auth).loadUser()),
+  ],
 };

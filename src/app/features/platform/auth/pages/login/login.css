@@ -1,0 +1,49 @@
+/* Layout container y cards anidados */
+:host {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 1rem;
+  height: 100dvh;
+  width: 100vw;
+
+  b-card {
+    &.email {
+      width: 400px;
+      max-width: 90vw;
+
+      &.otp-email-sent {
+        opacity: 0.4;
+        transition: opacity 0.2s ease-in-out;
+        animation: moveUp 0.5s forwards;
+        pointer-events: none;
+      }
+    }
+
+    &.otp {
+      opacity: 0;
+      animation:
+        moveUp 0.5s forwards,
+        fadeIn 0.5s 0.6s forwards;
+    }
+  }
+}
+
+@keyframes moveUp {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(-140px);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}

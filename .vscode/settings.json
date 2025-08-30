@@ -1,12 +1,22 @@
 {
-  "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": "always"
-  },
+  // Always format with Prettier
   "editor.formatOnSave": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+
+  // ESLint fixes issues on save (equivalent to ng lint --fix)
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "always",
+    "source.organizeImports": "always"
+  },
+
+  // Optional: enforce Prettier for these languages
   "[html]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "[typescript]": {
-    "editor.defaultFormatter": "dbaeumer.vscode-eslint"
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
   }
 }

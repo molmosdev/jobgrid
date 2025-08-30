@@ -1,31 +1,15 @@
 import { Routes } from '@angular/router';
-import { AuthenticatedGuard } from './core/guards/authenticated.guard';
-import { HasCompanyGuard } from './core/guards/has-company.guard';
-import { NeedsCompanyGuard } from './core/guards/needs-company.guard';
-import { UnauthenticatedGuard } from './core/guards/unauthenticated.guard';
+import { marketingRoutes } from './features/marketing/marketing.routes';
+import { platformRoutes } from './features/platform/platform.routes';
 
 export const routes: Routes = [
   {
     path: '',
-    loadComponent: () => import('./features/cooming-soon/cooming-soon.component')
+    children: marketingRoutes,
   },
   {
-    path: 'dashboard',
-    canActivate: [AuthenticatedGuard, HasCompanyGuard],
-    loadComponent: () => import('./features/dashboard/dashboard.component')
+    path: '',
+    children: platformRoutes,
   },
-  {
-    path: 'register',
-    canActivate: [UnauthenticatedGuard],
-    loadComponent: () => import('./features/register/register.component')
-  },
-  {
-    path: 'create-company',
-    canActivate: [AuthenticatedGuard, NeedsCompanyGuard],
-    loadComponent: () => import('./features/create-company/create-company.component')
-  },
-  {
-    path: '**',
-    loadComponent: () => import('./features/not-found/not-found.component')
-  }
+  { path: '**', loadComponent: () => import('./features/not-found/not-found').then((m) => m.NotFound) },
 ];

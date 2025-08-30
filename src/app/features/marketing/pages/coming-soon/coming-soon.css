@@ -1,0 +1,24 @@
+:host {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 100dvh;
+  gap: 0.5rem;
+
+  svg {
+    width: 4rem;
+    animation: svg-fade-in 0.5s;
+  }
+}
+
+@keyframes svg-fade-in {
+  0% {
+    opacity: 0;
+    scale: 0.9;
+  }
+  100% {
+    opacity: 1;
+    scale: 1;
+  }
+}
