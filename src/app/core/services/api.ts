@@ -1,6 +1,6 @@
 import { isPlatformBrowser } from '@angular/common';
 import { computed, inject, Injectable, PLATFORM_ID, signal } from '@angular/core';
-import { environment } from '@env/environment.development';
+import { environment } from '@env/environment';
 
 @Injectable({
   providedIn: 'root',
