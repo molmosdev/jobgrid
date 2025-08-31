@@ -4,6 +4,12 @@
     "description": "Enter your email to log in with OTP",
     "emailPlaceholder": "Enter your company email",
     "magicLink": "Login with Magic Link",
-    "verifyOtp": "Verify OTP"
+    "verifyOtp": "Verify OTP",
+    "error": {
+      "required": "This field is required",
+      "invalidEmail": "Invalid email address",
+      "freeEmailDomain": "Free email domains are not allowed",
+      "invalidOtp": "OTP code must be 6 digits"
+    }
   }
 }

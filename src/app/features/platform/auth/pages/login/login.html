@@ -11,6 +11,21 @@
       placeholder="{{ 'login.emailPlaceholder' | translate }}"
       formControlName="email"
     />
+    @let emailControl = emailForm.get('email');
+    <!-- Mensajes de error para el email -->
+    @if (emailControl?.touched && emailControl?.invalid) {
+      <div class="form-error">
+        @if (emailControl?.errors?.['required']) {
+          <span>{{ 'login.error.required' | translate }}</span>
+        }
+        @if (emailControl?.errors?.['email']) {
+          <span>{{ 'login.error.invalidEmail' | translate }}</span>
+        }
+        @if (emailControl?.errors?.['freeEmailDomain']) {
+          <span>{{ 'login.error.freeEmailDomain' | translate }}</span>
+        }
+      </div>
+    }
   </b-card-content>
   <b-card-footer>
     <button b-button [style.flex]="1" (click)="sendEmail()">
@@ -33,6 +48,18 @@
         <input b-otp-digit id="otp-5" />
         <input b-otp-digit id="otp-6" />
       </b-otp>
+      @let optControl = otpForm.get('otp');
+      <!-- Mensajes de error para el OTP -->
+      @if (optControl?.touched && optControl?.invalid) {
+        <div class="form-error">
+          @if (optControl?.errors?.['required']) {
+            <span>{{ 'login.error.required' | translate }}</span>
+          }
+          @if (optControl?.errors?.['pattern']) {
+            <span>{{ 'login.error.invalidOtp' | translate }}</span>
+          }
+        </div>
+      }
     </b-card-content>
     <b-card-footer>
       <button b-button [style.flex]="1" (click)="sendOtp()">

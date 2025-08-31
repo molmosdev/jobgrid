@@ -4,6 +4,12 @@
     "description": "Introduce tu correo para iniciar sesión con OTP",
     "emailPlaceholder": "Introduce el correo de tu empresa",
     "magicLink": "Acceder con Magic Link",
-    "verifyOtp": "Verificar OTP"
+    "verifyOtp": "Verificar OTP",
+    "error": {
+      "required": "Este campo es obligatorio",
+      "invalidEmail": "Correo electrónico inválido",
+      "freeEmailDomain": "El correo debe ser corporativo, con el dominio de tu empresa o adquirido por ti",
+      "invalidOtp": "El código OTP debe tener 6 dígitos"
+    }
   }
 }
