@@ -13,6 +13,7 @@ import {
   OtpComponent,
   OtpDigitDirective,
   SpinnerComponent,
+  TranslatePipe,
 } from '@basis-ng/primitives';
 import { Auth } from '@core/services/auth';
 
@@ -31,6 +32,7 @@ import { Auth } from '@core/services/auth';
     ButtonComponent,
     ReactiveFormsModule,
     SpinnerComponent,
+    TranslatePipe,
   ],
   templateUrl: './login.html',
   styleUrl: './login.css',
